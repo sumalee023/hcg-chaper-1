@@ -20,11 +20,14 @@ class Game{
 	loadJSON(json, callback) {   
 		var xobj = new XMLHttpRequest();
 			xobj.overrideMimeType("application/json");
-		xobj.open('GET', json + '.json', true); // Replace 'my_data' with the path to your file
+			// Replace 'my_data' with the path to your file
+			xobj.open('GET', json + '.json', true); 
 		const game = this;
 		xobj.onreadystatechange = function () {
 			  if (xobj.readyState == 4 && xobj.status == "200") {
-				// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+				// Required use of an anonymous callback 
+				// as .open will NOT return a value 
+				// but simply returns undefined in asynchronous mode
 				callback(xobj.responseText, game);
 			  }
 		};
@@ -121,7 +124,12 @@ class Game{
 			frame: frame,	
 			anchor: { x:0.5, y:0.5 },
 			image: this.spriteImage,
-			states: [ { mode:"spawn", duration: 0.5 }, {mode:"static", duration:1.5}, {mode:"die", duration:0.8} ]
+			states: 
+			[ 
+				{ mode:"spawn", duration: 0.5 }, 
+				{mode:"static", duration:1.5}, 
+				{mode:"die", duration:0.8} 
+			]
 		});
 		
 		this.sprites.push(sprite);
@@ -233,3 +241,4 @@ class Sprite{
 		this.context.globalAlpha = alpha;
 	}
 }
+
